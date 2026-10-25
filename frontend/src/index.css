@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   TASTE-SKILL APP SPECIFICATION: FRAMED-SHEET
+   Art Direction: smb-admin light framed-sheet
+   Palette: Ground #f9fbfc | Surface #ffffff | Border #e8eaec | Text #131416
+   Accent: #1b6c80 | Positive: #1e7b4f | Negative: #c4242a | Warning: #92400e
+   Rules: No gradients, no shadows at rest, <3% color budget, sentence-case
+   ========================================================================== */
+
+:root {
+  --ground: #f9fbfc;
+  --surface: #ffffff;
+  --raised: #f4f6f8;
+  --active: #ebedee;
+  --border: #e8eaec;
+  --rule: #f0f1f2;
+  --control: #cdced1;
+  --text: #131416;
+  --muted: #5d5f60;
+  --faint: #6b6b6b;
+  --accent: #1b6c80;
+  --primary: #131416;
+  --primary-ink: #ffffff;
+  --positive: #1e7b4f;
+  --negative: #c4242a;
+  --warning: #92400e;
+
+  --pill-positive-bg: #dcfae5;
+  --pill-positive-ink: #04250e;
+  --pill-negative-bg: #ffedea;
+  --pill-negative-ink: #831c1e;
+  --pill-warning-bg: #fffbeb;
+  --pill-warning-ink: #92400e;
+  --pill-neutral-bg: #ebedee;
+  --pill-neutral-ink: #353736;
+
+  --radius-card: 8px;
+  --radius-control: 6px;
+  --radius-sheet: 16px;
+
+  --font: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--ground);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tabular numerals for figures and IDs */
+.num, table td, .kpi-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Framed Sheet Wrapper */
+.wireframe-container {
+  max-width: 1360px;
+  width: 96%;
+  margin: 16px auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sheet);
+  background-color: var(--surface);
+  overflow: hidden;
+}
+
+/* Inset white sheet inside admin layout */
+.framed-sheet-canvas {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sheet);
+  margin: 0 8px 8px 0;
+  min-height: calc(100svh - 56px);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .framed-sheet-canvas {
+    margin: 8px;
+  }
+}
+
+/* Cards & Sections */
+.wf-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background-color: var(--surface);
+}
+
+/* KPIs Divided Container */
+.kpi-strip {
+  display: grid;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+}
+
+.kpi-cell {
+  padding: 16px 20px;
+}
+
+/* Bảng dữ liệu: sentence-case headers, 1px rules, no gradients */
+.table-grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.table-grid th {
+  background-color: transparent;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 12px;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.table-grid td {
+  padding: 11px 14px;
+  color: var(--text);
+  border-bottom: 1px solid var(--rule);
+  background-color: var(--surface);
+  vertical-align: middle;
+}
+
+.table-grid tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-grid tbody tr:hover td {
+  background-color: var(--raised);
+}
+
+/* Form inputs & selects */
+.input-control {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--control);
+  border-radius: var(--radius-control);
+  background-color: var(--surface);
+  color: var(--text);
+  font-size: 13.5px;
+  outline: none;
+  transition-property: border-color;
+  transition-duration: 150ms;
+}
+
+.input-control:focus {
+  border-color: var(--accent);
+}
+
+.input-readonly {
+  border: 1px dashed var(--control) !important;
+  background-color: var(--raised) !important;
+  cursor: not-allowed !important;
+  color: var(--muted);
+}
+
+/* Buttons */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 6px 12px;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid var(--control);
+  border-radius: var(--radius-control);
+  background-color: var(--surface);
+  color: var(--text);
+  transition-property: background-color, border-color, color;
+  transition-duration: 150ms;
+}
+
+.btn-action:hover:not(:disabled) {
+  background-color: var(--raised);
+  border-color: var(--control);
+}
+
+.btn-action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Flat Primary button (near-black) */
+.btn-primary-wf {
+  background-color: var(--primary);
+  color: var(--primary-ink);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-weight: 500;
+}
+
+.btn-primary-wf:hover:not(:disabled) {
+  opacity: 0.88;
+  background-color: var(--primary);
+  color: var(--primary-ink);
+}
+
+/* Flat Accent button (teal accent for single primary action) */
+.btn-gold-modern {
+  background-color: var(--accent);
+  color: #ffffff;
+  border: 1px solid transparent;
+  font-weight: 500;
+  border-radius: var(--radius-control);
+}
+
+.btn-gold-modern:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Danger Button (flat red) */
+.btn-danger-wf {
+  background-color: var(--negative);
+  color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-weight: 500;
+}
+
+.btn-danger-wf:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Status Pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: var(--pill-neutral-bg);
+  color: var(--pill-neutral-ink);
+  white-space: nowrap;
+}
+
+.pill-pos {
+  background-color: var(--pill-positive-bg);
+  color: var(--pill-positive-ink);
+}
+
+.pill-neg {
+  background-color: var(--pill-negative-bg);
+  color: var(--pill-negative-ink);
+}
+
+.pill-warn {
+  background-color: var(--pill-warning-bg);
+  color: var(--pill-warning-ink);
+}
+
+.pill-neutral {
+  background-color: var(--pill-neutral-bg);
+  color: var(--pill-neutral-ink);
+}
+
+/* Native HTML <dialog> modal */
+dialog.wf-modal-dialog {
+  padding: 0;
+  background-color: var(--surface);
+  color: var(--text);
+  max-width: 780px;
+  width: 95%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sheet);
+  overflow: hidden;
+}
+
+dialog.wf-modal-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* Print stylesheet */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .wireframe-container, .framed-sheet-canvas {
+    border: 1px solid #000 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}

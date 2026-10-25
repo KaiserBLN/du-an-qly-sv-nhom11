@@ -1,0 +1,20 @@
+{
+  "name": "qlsv-backend",
+  "version": "1.0.0",
+  "description": "Backend API & RBAC Guard - Hệ thống Quản lý Danh sách Sinh viên (Nhóm 11 - IT6040003)",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "init-db": "node src/initNewDb.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "playwright-core": "^1.64.1",
+    "sql.js": "^1.12.0"
+  }
+}
